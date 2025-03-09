@@ -1,0 +1,6 @@
+- jira:
+  - username: $JIRA_USERNAME
+  - key: $JIRA_API_TOKEN
+- gh:
+  - username: $GITHUB_USERNAME
+  - key: $GITHUB_API_TOKEN

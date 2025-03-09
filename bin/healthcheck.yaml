@@ -1,0 +1,27 @@
+- make:
+  - validate: make -v
+- fzf:
+  - validate: fzf --version
+- node:
+  - validate: node --version
+- lua:
+  - validate: lua -v
+- python:
+  - validate: python3 --version
+- curl:
+  - validate: curl --version
+  - install: brew install curl
+- shellcheck:
+  - validate: shellcheck --version
+  - install: brew install shellcheck
+- yq:
+  - validate: yq --version
+  - install: brew install yq
+- nvim:
+  - validate: nvim --version
+  - install_dependencies: brew install ninja cmake gettext curl
+  - install: git clone --branch v0.10.4 --single-branch https://github.com/neovim/neovim.git ../deps/nvim\
+             && cd ../deps/nvim \ 
+             && make CMAKE_BUILD_TYPE=Release \ 
+             && sudo make install \ 
+    
