@@ -19,3 +19,13 @@ function find_branches_for_key() {
   echo "$branches"
 }
 
+function sbranch() {
+  # Add flag for pr status
+  git for-each-ref --count="${1:-10}" --sort=-committerdate refs/heads/ --format='%(refname:short)' \
+  | fzf \
+  | xargs -t -I {} git checkout {}
+}
+
+function commit() {
+  git commit -m "$*"
+}
