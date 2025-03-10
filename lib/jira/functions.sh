@@ -12,3 +12,10 @@ function list_open_issues() {
     -q "$query" \
     | sed '1d' 
 }
+
+# Lists the current issue
+#
+# TODO: Migrate to the local cache strategy
+function issue() {
+  git rev-parse --abbrev-ref HEAD | awk -F'-' '{print $(NF-1)"-"$NF}' | xargs -t -I{} jira issues view {}
+}
