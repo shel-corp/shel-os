@@ -5,4 +5,5 @@ FUNCTION_SCRIPT="$SCRIPTDIR/functions.sh"
 ROOTDIR="$(cd $SCRIPTDIR/../.. && pwd)"
 
 
-$ROOTDIR/bin/utils/function_runner.sh $FUNCTION_SCRIPT
+MENU_HEADER="Git tools"
+$ROOTDIR/bin/utils/function_runner.sh $FUNCTION_SCRIPT --header="$MENU_HEADER" --no-clear

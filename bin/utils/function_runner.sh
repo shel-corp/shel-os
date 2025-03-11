@@ -26,7 +26,7 @@ if [ -z "$functions" ]; then
 fi
 
 # Use fzf to select a function
-selected_function=$(echo "$functions" | fzf)
+selected_function=$(echo "$functions" | fzf "$@")
 
 # Check if a function was selected
 if [ -z "$selected_function" ]; then
