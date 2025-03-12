@@ -3,5 +3,4 @@
 
 SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo $SCRIPTDIR
-
+git clone https://github.com/neovim/neovim

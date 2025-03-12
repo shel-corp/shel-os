@@ -18,3 +18,6 @@ else
     echo "The following dependencies are missing: ${not_installed[@]}"
 fi
 
+# Run shellcheck recursively on all .sh files in the current directory
+find . -name "*.sh" -exec shellcheck {} \;
+
