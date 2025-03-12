@@ -1,0 +1,3 @@
+[submodule "apps/observe"]
+	path = apps/observe
+	url = https://github.com/shel-corp/observe
