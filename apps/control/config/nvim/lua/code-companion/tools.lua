@@ -1,0 +1,32 @@
+--- Tools must implement the following interface
+---
+---@class CodeCompanion.Tool
+---@field name string The name of the tool
+---@field cmds table The commands to execute
+---@field schema table The schema that the LLM must use in its response to execute a tool
+---@field system_prompt fun(schema: table): string The system prompt to the LLM explaining the tool and the schema
+---@field opts? table The options for the tool
+---@field env? fun(schema: table): table|nil Any environment variables that can be used in the *_cmd fields. Receives the parsed schema from the LLM
+---@field handlers table Functions which can be called during the execution of the tool
+---@field handlers.setup? fun(self: CodeCompanion.Tools): any Function used to setup the tool. Called before any commands
+---@field handlers.approved? fun(self: CodeCompanion.Tools): boolean Function to call if an approval is needed before running a command
+---@field handlers.on_exit? fun(self: CodeCompanion.Tools): any Function to call at the end of all of the commands
+---@field output? table Functions which can be called after the command finishes
+---@field output.rejected? fun(self: CodeCompanion.Tools, cmd: table): any Function to call if the user rejects running a command
+---@field output.error? fun(self: CodeCompanion.Tools, cmd: table, error: table|string): any Function to call if the tool is unsuccessful
+---@field output.success? fun(self: CodeCompanion.Tools, cmd: table, output: table|string): any Function to call if the tool is successful
+---@field request table The request from the LLM to use the Tool
+
+--- PR description tool
+--- Steps:
+--- 1. Get the commits for the current branch
+--- 2. Get the jira ticket from issue command
+--- 3. Get the PR title from the branch name
+--- 4. Generate commit descriptions for each commit
+---   - Get the commit message
+---   - Summarize file changes
+---   - Summarize integration test changes
+---   - Summarize unit test changes
+--- 5. Generate the PR description using the PR template
+--- 6. Run through the gh create pr command
+
