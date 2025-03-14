@@ -1,8 +1,9 @@
 #!/bin/bash
 
-SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-FUNCTION_SCRIPT="$SCRIPTDIR/functions.sh"
-ROOTDIR="$(cd $SCRIPTDIR/../.. && pwd)"
+# @doc 
+# # A collection of helper functions for git operations.
+
+source "$( dirname "${BASH_SOURCE[0]}")"/../../bin/dir.sh
 
 # Function to find git branches that contain the key (case-insensitive)
 function find_branches_for_key() {

@@ -1,5 +1,6 @@
 #!/bin/bash
-# 
+
+# @doc 
 # An fzf configuration
 # 
 # Theme generator: https://vitormv.github.io/fzf-themes/
@@ -16,7 +17,11 @@
 # --with-nth='{-2}' : Display only the second-to-last field in the fzf interface
 #
 # see `$ man fzf` for more information
+
+source "$( dirname "${BASH_SOURCE[0]}")"/../bin/dir.sh
+
 FZF_LABEL=" $VERSION "
+
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --border-label="'$FZF_LABEL'" 
   --color=prompt:-1,spinner:-1,pointer:-1,header:-1

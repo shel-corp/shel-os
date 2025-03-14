@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# @doc
 # Used to query a yaml file for a specific field.
 #
 # # Usage:

@@ -1,5 +1,16 @@
 #!/bin/bash
 
-SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+# @doc
+#
+# A script to set permissions for the shel_os project.
+#
+# Recursively sets read, write, and execute permissions for all files in the project directory.
+#
+# # Usage:
+# ./permissions.sh
 
-chmod -R +rwx $SCRIPTDIR
+source "$( dirname "${BASH_SOURCE[0]}")"/dir.sh
+
+SCRIPT_DIR="$(script_dir)"
+
+chmod -R +rwx $SCRIPT_DIR

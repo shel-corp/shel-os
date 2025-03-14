@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# @doc
+# This script allows you to select and run a function from a specified script file.
+# It uses fzf for interactive selection and passes any additional arguments to the selected function.
+#
+# # Usage: ./function_runner.sh <script-file> [<args>...]
+
 # Check if the correct number of arguments is provided
 if [ "$#" -lt 1 ]; then
   echo "Usage: $0 <script-file> [<args>...]"

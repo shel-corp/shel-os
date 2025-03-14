@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-FUNCTION_SCRIPT="$SCRIPTDIR/functions.sh"
-ROOTDIR="$(cd $SCRIPTDIR/../.. && pwd)"
+source "$( dirname "${BASH_SOURCE[0]}")"/../../bin/dir.sh
 
+SCRIPT_DIR="$(script_dir)"
+FUNCTION_SCRIPT="$SCRIPT_DIR/functions.sh"
 
-MENU_HEADER="Git tools"
-$ROOTDIR/bin/utils/function_runner.sh $FUNCTION_SCRIPT --header="$MENU_HEADER" --no-clear
+echo $ROOT_DIR
+$ROOT_DIR/bin/utils/function_runner.sh $FUNCTION_SCRIPT

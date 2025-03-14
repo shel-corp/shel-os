@@ -1,12 +1,19 @@
 #!/bin/bash
 
-SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )"
+# @doc
+#
+# Installs dependencies for the shel_os project.
+#
+# # Usage:
+# # # ./install.sh
 
-echo "$ROOTDIR"
+source "$( dirname "${BASH_SOURCE[0]}")"/../dir.sh
 
-mkdir $ROOTDIR/.tmp
+SCRIPT_DIR=$(script_dir)
 
-$SCRIPTDIR/nvim.sh
+
+mkdir $ROOT_DIR/.tmp
+
+$SCRIPT_DIR/nvim.sh
 
 rm -rf $ROOTDIR/.tmp

@@ -1,14 +1,14 @@
-
 #!/bin/bash
-# 
+
+# @doc
 # A helper function to call fzf with predefined options
 #
+# Usage:
+# # shel_fzf [fzf_options]
+
+source "$( dirname "${BASH_SOURCE[0]}")"/../dir.sh
+
 shel_fzf() {
-  SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-  ROOTDIR="$(cd $SCRIPTDIR/../.. && pwd)"
-  VERSION=$(cat "$ROOTDIR/version")
-
-
   # Source the default fzf configuration
   source $ROOTDIR/config/fzf.sh
 

@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# @doc
+#
+# # This script checks for the installation of required dependencies for the shel_os project.
+# 
+# # Usage:
+#  ./healthcheck.sh
+
+
+
+
 echo "Verifying installation of dependencies..."
 
 not_installed=()
