@@ -1,12 +1,12 @@
 #!/bin/bash
+source "$( dirname "${BASH_SOURCE[0]}")"/bin/dir.sh
+source "$ROOT_DIR/bin/utils/fzf.sh"
 
-SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOTDIR=$SCRIPTDIR
-
-VERSION=$(cat "$ROOTDIR/version")
+SCRIPT_DIR="$(script_dir)"
+VERSION=$(cat "$ROOT_DIR/version")
 
 # Check if the ./lib directory exists
-if [ ! -d "$SCRIPTDIR/lib" ]; then
+if [ ! -d "$SCRIPT_DIR/lib" ]; then
   echo "Directory ./lib does not exist."
   exit 1
 fi
@@ -18,12 +18,10 @@ else
   QUERY="$1"
 fi
 
-# Source the fzf configuration
-source "$ROOTDIR/bin/utils/fzf.sh"
 
 MENU_HEADER="Tools"
 # List all .sh files in the ./lib directory, pipe them into fzf for selection
-selected_script=$( find "$SCRIPTDIR/lib" -type f -name "main.sh" | \
+selected_script=$( find "$SCRIPT_DIR/lib" -type f -name "main.sh" | \
   shel_fzf --query="$QUERY" --header="$MENU_HEADER" --delimiter="/" --with-nth='{-2}' --no-clear
 )
 

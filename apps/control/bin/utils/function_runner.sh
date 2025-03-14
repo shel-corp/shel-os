@@ -6,7 +6,9 @@
 #
 # # Usage: ./function_runner.sh <script-file> [<args>...]
 
-# Check if the correct number of arguments is provided
+source "$( dirname "${BASH_SOURCE[0]}")"/../dir.sh
+source "$ROOT_DIR/bin/utils/fzf.sh"
+
 if [ "$#" -lt 1 ]; then
   echo "Usage: $0 <script-file> [<args>...]"
   exit 1
@@ -32,7 +34,7 @@ if [ -z "$functions" ]; then
 fi
 
 # Use fzf to select a function
-selected_function=$(echo "$functions" | fzf "$@")
+selected_function=$(echo "$functions" | shel_fzf --no-clear "$@")
 
 # Check if a function was selected
 if [ -z "$selected_function" ]; then

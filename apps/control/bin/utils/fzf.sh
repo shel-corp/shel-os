@@ -10,7 +10,7 @@ source "$( dirname "${BASH_SOURCE[0]}")"/../dir.sh
 
 shel_fzf() {
   # Source the default fzf configuration
-  source $ROOTDIR/config/fzf.sh
+  source "$ROOT_DIR"/config/fzf.sh
 
   fzf "$@"
 }
