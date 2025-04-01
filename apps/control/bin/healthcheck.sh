@@ -7,13 +7,10 @@
 # # Usage:
 #  ./healthcheck.sh
 
-
-
-
 echo "Verifying installation of dependencies..."
 
 not_installed=()
-required=("make" "nvim" "git" "fzf" "jira" "cat" "curl" "rg" "fd" "bat" "gh")
+required=("make" "nvim" "git" "fzf" "jira" "cat" "curl" "rg" "fd" "bat" "gh" "getopt")
 
 for req in "${required[@]}"; do
     if ! command -v $req &> /dev/null; then

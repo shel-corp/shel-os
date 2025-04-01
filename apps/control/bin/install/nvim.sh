@@ -9,26 +9,26 @@ echo "Installing Neovim..."
 if [ -d "$NVIM_DIR" ]; then
   echo "Neovim is already installed in $NVIM_DIR"
 else
-  git clone --depth 1 --branch v0.10.4 https://github.com/neovim/neovim $ROOT_DIR/.tmp/neovim
+  git clone --depth 1 --branch v0.10.4 https://github.com/neovim/neovim "$ROOT_DIR"/.tmp/neovim
 
-  cd $ROOT_DIR/.tmp/neovim 
+  cd "$ROOT_DIR"/.tmp/neovim  || exit 1
 
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$NVIM_DIR"
   CMAKE_BUILD_TYPE=RelWithDebInfo
   make install
   
-  cd $ROOT_DIR
+  cd "$ROOT_DIR" || exit 1
 fi
 
 echo "Setting up config..."
 
-if [ -L "$HOME/.config/shel_os" && -L "$HOME/.config/shel_os" ]; then
+if [ -L "$HOME/.config/shel_os" ] && [ -L "$HOME/.config/shel_os" ]; then
   echo "ERROR: Config directory already exists at $CONFIG_DIR/nvim"
   exit 1
 elif [ -L "$HOME/.config/shel_os" ]; then
   echo "Config directory is already a symlink to $CONFIG_DIR/nvim"
 else
-  ln -s $CONFIG_DIR $HOME/.config/shel_os
+  ln -s "$CONFIG_DIR" "$HOME"/.config/shel_os
 fi
 
 echo "Installing plugins.."

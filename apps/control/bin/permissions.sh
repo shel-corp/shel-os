@@ -11,6 +11,4 @@
 
 source "$( dirname "${BASH_SOURCE[0]}")"/dir.sh
 
-SCRIPT_DIR="$(script_dir)"
-
-chmod -R +rwx $SCRIPT_DIR
+chmod -R +rwx "$ROOT_DIR"

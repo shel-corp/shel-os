@@ -2,34 +2,46 @@
 source "$( dirname "${BASH_SOURCE[0]}")"/bin/dir.sh
 source "$ROOT_DIR/bin/utils/fzf.sh"
 
+# @doc
+#
+# A script to select and execute a script from the ./lib directory using fzf
+#
+# # Usage:
+# ./main.sh [query]
+
+
 SCRIPT_DIR="$(script_dir)"
 VERSION=$(cat "$ROOT_DIR/version")
 
-# Check if the ./lib directory exists
-if [ ! -d "$SCRIPT_DIR/lib" ]; then
-  echo "Directory ./lib does not exist."
-  exit 1
-fi
+# If no args print help
+scripts=$( find "$SCRIPT_DIR"/lib -type f -name "main.sh")
 
-#Set to first arg or ''
 if [ -z "$1" ]; then
-  QUERY=""
-else
-  QUERY="$1"
-fi
-
-
-MENU_HEADER="Tools"
-# List all .sh files in the ./lib directory, pipe them into fzf for selection
-selected_script=$( find "$SCRIPT_DIR/lib" -type f -name "main.sh" | \
-  shel_fzf --query="$QUERY" --header="$MENU_HEADER" --delimiter="/" --with-nth='{-2}' --no-clear
-)
-
-# Check if a script was selected
-if [ -z "$selected_script" ]; then
-  echo "No script selected."
+  echo ""
+  echo "Available arguments:"
+  echo ""
+  echo "    -i, --interactive: Interactive mode"
+  echo ""
+  for script in $scripts; do
+ # print last directory of the script, not the file
+ echo "    $(echo "$script" | awk -F'/' '{print $(NF-1)}')"
+  done
   exit 1
 fi
 
-# Execute the selected script
-bash "$selected_script"
+if [[ "$1" == "-i" || "$1" == "--interactive" ]]; then
+  "$SCRIPT_DIR"/lib/interactive.sh
+else
+
+  # Loop over scripts and execute one where the filename matches the first arg
+  # Exits if no match is found
+  for script in $scripts; do
+    if [[ "$script" == *"$1"* ]]; then
+      bash "$script"
+      exit 0
+    fi
+  done
+
+
+
+fi

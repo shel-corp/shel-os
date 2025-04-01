@@ -31,3 +31,7 @@ function sbranch() {
 function commit() {
   git commit -m "$*"
 }
+
+function gen_commit() {
+  "$LIB_DIR"/llm/gen_commit.sh "$@"
+}

@@ -34,7 +34,7 @@ if [ -z "$functions" ]; then
 fi
 
 # Use fzf to select a function
-selected_function=$(echo "$functions" | shel_fzf --no-clear "$@")
+selected_function=$(echo "$functions" | shel_fzf "$@")
 
 # Check if a function was selected
 if [ -z "$selected_function" ]; then
